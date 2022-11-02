@@ -1,20 +1,21 @@
 <script setup lang="ts">
-  const picture ="https://thumb.tildacdn.com/tild3434-3636-4431-b038-393032656635/-/resize/360x400/-/format/webp/9832132844_08b63dd445_o.jpg";
+  import {CustomCardsTypes} from "~/types/CustomCardsTypes";
 
   const props = defineProps<{
-    testArr: object
+    data: CustomCardsTypes[]
   }>()
+
 </script>
 
 <template>
   <div class="card"
-       v-for="item in testArr"
-       :key="testArr.id">
+       v-for="item in data"
+       :key="item.id">
     <div class="card__image">
-      <img :src="item.img" alt="image">
+      <img :src="`http://localhost:9100/static/${item.img}`" alt="image" />
     </div>
     <div class="card__title">
-      <h3>{{ item.title }}</h3>
+      <h3>{{ item.name }}</h3>
     </div>
     <div class="card__price">
       <p>{{ item.price }}</p>
@@ -25,6 +26,7 @@
 <style scoped lang="scss">
   @import 'assets/scss/_global.scss';
   .card{
+    cursor: pointer;
     width: 90%;
     min-height: 380px;
     display: flex;

@@ -1,49 +1,16 @@
 <script setup lang="ts">
   import GoodCard from "~/components/atoms/GoodCard.vue";
+  import {useDataStore} from "~/store/index";
+  import {computed} from "vue";
 
-  const testArr = [
-    {
-      id: 1,
-      img: "https://thumb.tildacdn.com/tild3434-3636-4431-b038-393032656635/-/cover/560x560/center/center/-/format/webp/9832132844_08b63dd445_o.jpg",
-      title: "title",
-      price: 1200
-    },
-    {
-      id: 1,
-      img: "https://thumb.tildacdn.com/tild3434-3636-4431-b038-393032656635/-/cover/560x560/center/center/-/format/webp/9832132844_08b63dd445_o.jpg",
-      title: "title",
-      price: 1200
-    },
-    {
-      id: 1,
-      img: "https://thumb.tildacdn.com/tild3434-3636-4431-b038-393032656635/-/cover/560x560/center/center/-/format/webp/9832132844_08b63dd445_o.jpg",
-      title: "title",
-      price: 1200
-    },
-    {
-      id: 1,
-      img: "https://thumb.tildacdn.com/tild3434-3636-4431-b038-393032656635/-/cover/560x560/center/center/-/format/webp/9832132844_08b63dd445_o.jpg",
-      title: "title",
-      price: 1200
-    },
-    {
-      id: 1,
-      img: "https://thumb.tildacdn.com/tild3434-3636-4431-b038-393032656635/-/cover/560x560/center/center/-/format/webp/9832132844_08b63dd445_o.jpg",
-      title: "title",
-      price: 1200
-    },
-    {
-      id: 1,
-      img: "https://thumb.tildacdn.com/tild3434-3636-4431-b038-393032656635/-/cover/560x560/center/center/-/format/webp/9832132844_08b63dd445_o.jpg",
-      title: "title",
-      price: 1200
-    }
-  ]
+  const store = useDataStore();
+  await store.getData();
+  const goodsList = computed(() => store.goodsList);
 </script>
 
 <template>
   <div class="gallary">
-      <good-card :testArr="testArr"/>
+      <good-card :data="goodsList"/>
   </div>
 </template>
 
